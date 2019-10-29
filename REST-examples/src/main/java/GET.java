@@ -1,19 +1,13 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 import java.net.URL;
 
-/**
- * An example showing how to send HTTP GET and read the response from the server
- */
-public class GETExample {
-
-    public static void main(String[] args) {
-        // TODO: set correct host (domain or IP address) and TCP port
-        GETExample example = new GETExample("datakomm.work", 80);
-        example.doExampleGet();
-    }
-
+public class GET
+{
     private String BASE_URL; // Base URL (address) of the server
 
     /**
@@ -22,16 +16,8 @@ public class GETExample {
      * @param host Will send request to this host: IP address or domain
      * @param port Will use this port
      */
-    public GETExample(String host, int port) {
+    public GET(String host, int port) {
         BASE_URL = "http://" + host + ":" + port + "/";
-    }
-
-    /**
-     * Send an HTTP GET to a specific path on the web server
-     */
-    public void doExampleGet() {
-        // TODO: change path to something correct
-        sendGet("dkrest/test/get2");
     }
 
     /**
@@ -90,3 +76,4 @@ public class GETExample {
     }
 
 }
+
