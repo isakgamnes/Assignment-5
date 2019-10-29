@@ -1,3 +1,5 @@
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,7 +27,8 @@ public class GET
      *
      * @param path     Relative path in the API.
      */
-    private void sendGet(String path) {
+    public JSONObject sendGet(String path) {
+        JSONObject returnObject = null;
         try {
             String url = BASE_URL + path;
             URL urlObj = new URL(url);
@@ -43,6 +46,7 @@ public class GET
                 stream.close();
                 System.out.println("Response from the server:");
                 System.out.println(responseBody);
+                returnObject = new JSONObject(responseBody);
             } else {
                 String responseDescription = con.getResponseMessage();
                 System.out.println("Request failed, response code: " + responseCode + " (" + responseDescription + ")");
@@ -53,6 +57,7 @@ public class GET
             System.out.println("Something went wrong: " + e.getMessage());
             e.printStackTrace();
         }
+        return returnObject;
     }
 
     /**
